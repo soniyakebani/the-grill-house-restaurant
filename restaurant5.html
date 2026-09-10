@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Grill House — Family Restaurant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#241C16;
+    --cream:#F4EFE4;
+    --wine:#7A2129;
+    --olive:#5F6B45;
+    --gold:#B8863B;
+    --line: rgba(36,28,22,0.15);
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+
+  /* NAVBAR */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--cream);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:78px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--wine);
+  }
+  .brand span{color:var(--olive);}
+  .nav-links{
+    display:flex; gap:36px; align-items:center;
+    font-size:0.95rem;
+  }
+  .nav-links a{
+    position:relative;
+    padding:6px 0;
+    color:var(--ink);
+    transition:color .25s ease;
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute; left:0; bottom:0;
+    width:0%; height:2px;
+    background:var(--wine);
+    transition:width .3s ease;
+  }
+  .nav-links a:hover{color:var(--wine);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--wine);
+    color:var(--cream) !important;
+    padding:10px 20px;
+    border-radius:2px;
+    font-weight:500;
+    transition:background .25s ease, transform .2s ease;
+  }
+  .nav-cta::after{display:none;}
+  .nav-cta:hover{background:#5c1620; transform:translateY(-2px);}
+
+  /* HERO */
+  .hero{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items:center;
+    gap:48px;
+    padding:80px 0 100px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-eyebrow{
+    color:var(--olive);
+    font-size:0.9rem;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5vw, 4.2rem);
+    line-height:1.05;
+    color:var(--ink);
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--wine);
+  }
+  .hero p{
+    max-width:46ch;
+    margin:24px 0 34px;
+    font-size:1.05rem;
+    color:#4A4038;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:14px 28px;
+    font-size:0.95rem;
+    font-weight:500;
+    border-radius:2px;
+    border:1.5px solid var(--ink);
+    transition:all .28s ease;
+    cursor:pointer;
+  }
+  .btn-solid{
+    background:var(--ink);
+    color:var(--cream);
+  }
+  .btn-solid:hover{
+    background:var(--wine);
+    border-color:var(--wine);
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(122,33,41,0.25);
+  }
+  .btn-outline{
+    background:transparent;
+    color:var(--ink);
+  }
+  .btn-outline:hover{
+    border-color:var(--olive);
+    color:var(--olive);
+    transform:translateY(-3px);
+  }
+  .hero-visual{
+    position:relative;
+    aspect-ratio:4/5;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(184,134,59,0.35), transparent 55%),
+      linear-gradient(160deg, var(--olive), #33361F 70%);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .hero-visual img{
+    width:100%; height:100%;
+    object-fit:cover;
+    position:relative; z-index:1;
+  }
+  .hero-visual .caption{
+    position:absolute; bottom:24px; left:24px;
+    color:var(--cream);
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.1rem;
+    max-width:70%;
+    z-index:2;
+    text-shadow:0 2px 10px rgba(0,0,0,0.5);
+  }
+
+  /* SECTION HEADERS */
+  .section{padding:96px 0;}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    margin-bottom:48px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:24px;
+  }
+  .section-head h2{
+    font-size:2.4rem;
+  }
+  .section-head p{
+    max-width:36ch;
+    color:#4A4038;
+    font-size:0.98rem;
+  }
+
+  /* MENU CARDS */
+  .menu-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:28px;
+  }
+  .card{
+    background:#FBF8F1;
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:26px;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 30px rgba(36,28,22,0.12);
+    border-color:var(--gold);
+  }
+  .card-media{
+    height:170px;
+    border-radius:2px;
+    margin-bottom:18px;
+    background:linear-gradient(135deg, var(--gold), var(--wine));
+    position:relative;
+    overflow:hidden;
+  }
+  .card-media img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .5s ease;
+  }
+  .card:hover .card-media img{
+    transform:scale(1.08);
+  }
+  .card-media span{
+    position:absolute; top:12px; right:12px;
+    background:rgba(36,28,22,0.75);
+    color:var(--cream);
+    font-size:0.75rem;
+    padding:4px 10px;
+    border-radius:20px;
+    z-index:2;
+  }
+  .card h3{
+    font-size:1.3rem;
+    margin-bottom:8px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .veg-mark, .nonveg-mark{
+    width:16px; height:16px;
+    border:1.5px solid;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:2px;
+    flex-shrink:0;
+  }
+  .veg-mark{border-color:var(--olive);}
+  .veg-mark::after{
+    content:"";
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--olive);
+  }
+  .nonveg-mark{border-color:var(--wine);}
+  .nonveg-mark::after{
+    content:"";
+    width:0; height:0;
+    border-left:5px solid transparent;
+    border-right:5px solid transparent;
+    border-bottom:8px solid var(--wine);
+  }
+  .card p.desc{
+    color:#5C5145;
+    font-size:0.92rem;
+    min-height:44px;
+  }
+  .card-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:18px;
+    padding-top:14px;
+    border-top:1px dashed var(--line);
+  }
+  .price{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color:var(--wine);
+    font-size:1.15rem;
+  }
+  .add-btn{
+    border:1.5px solid var(--ink);
+    background:transparent;
+    color:var(--ink);
+    width:34px; height:34px;
+    border-radius:50%;
+    font-size:1.1rem;
+    cursor:pointer;
+    transition:all .25s ease;
+  }
+  .add-btn:hover{
+    background:var(--olive);
+    border-color:var(--olive);
+    color:var(--cream);
+    transform:rotate(90deg);
+  }
+
+  /* ABOUT */
+  .about{
+    background:var(--ink);
+    color:var(--cream);
+  }
+  .about .wrap{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .about-visual{
+    aspect-ratio:1/1;
+    background:
+      radial-gradient(circle at 70% 30%, rgba(122,33,41,0.55), transparent 60%),
+      linear-gradient(200deg,#3B3327,#241C16);
+    border-radius:4px;
+    border:1px solid rgba(244,239,228,0.15);
+    overflow:hidden;
+  }
+  .about-visual img{
+    width:100%; height:100%;
+    object-fit:cover;
+    opacity:0.85;
+  }
+  .about h2{
+    color:var(--cream);
+    font-size:2.4rem;
+    margin-bottom:22px;
+  }
+  .about p{
+    color:#D8D0C2;
+    max-width:52ch;
+    margin-bottom:16px;
+    font-size:1rem;
+  }
+  .stat-row{
+    display:flex;
+    gap:40px;
+    margin-top:32px;
+  }
+  .stat-row div h3{
+    color:var(--gold);
+    font-size:2rem;
+  }
+  .stat-row div span{
+    font-size:0.85rem;
+    color:#B8AF9F;
+  }
+
+  /* CONTACT */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+  }
+  .contact-info h3{
+    font-size:1.5rem;
+    margin-bottom:14px;
+  }
+  .contact-info p{
+    color:#4A4038;
+    margin-bottom:22px;
+    max-width:40ch;
+  }
+  .info-line{
+    display:flex;
+    gap:14px;
+    margin-bottom:14px;
+    font-size:0.95rem;
+  }
+  .info-line b{color:var(--wine); min-width:80px; display:inline-block;}
+
+  form{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  form input, form textarea{
+    background:#FBF8F1;
+    border:1px solid var(--line);
+    padding:14px 16px;
+    font-family:inherit;
+    font-size:0.95rem;
+    border-radius:2px;
+    color:var(--ink);
+    transition:border-color .25s ease, box-shadow .25s ease;
+  }
+  form input:focus, form textarea:focus{
+    outline:none;
+    border-color:var(--wine);
+    box-shadow:0 0 0 3px rgba(122,33,41,0.12);
+  }
+  form textarea{resize:vertical; min-height:110px;}
+  form button{
+    align-self:flex-start;
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:28px 0;
+    font-size:0.85rem;
+    color:#6B6152;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  @media (max-width: 860px){
+    .hero{grid-template-columns:1fr;}
+    .about .wrap{grid-template-columns:1fr;}
+    .about-visual{order:-1;}
+    .contact-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .section-head{flex-direction:column; align-items:flex-start;}
+  }
+
+  /* ITEM MODAL */
+  .modal-overlay{
+    position:fixed; inset:0;
+    background:rgba(36,28,22,0.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    padding:20px;
+    opacity:0;
+    transition:opacity .25s ease;
+  }
+  .modal-overlay.open{
+    display:flex;
+    opacity:1;
+  }
+  .modal-box{
+    background:#FBF8F1;
+    border-radius:4px;
+    max-width:420px;
+    width:100%;
+    overflow:hidden;
+    transform:translateY(16px) scale(0.97);
+    transition:transform .28s ease;
+    box-shadow:0 30px 60px rgba(0,0,0,0.3);
+  }
+  .modal-overlay.open .modal-box{
+    transform:translateY(0) scale(1);
+  }
+  .modal-media{
+    height:200px;
+    overflow:hidden;
+    position:relative;
+  }
+  .modal-media img{
+    width:100%; height:100%;
+    object-fit:cover;
+  }
+  .modal-close{
+    position:absolute; top:12px; right:12px;
+    width:32px; height:32px;
+    border-radius:50%;
+    border:none;
+    background:rgba(36,28,22,0.7);
+    color:var(--cream);
+    font-size:1.1rem;
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .25s ease, transform .25s ease;
+  }
+  .modal-close:hover{
+    background:var(--wine);
+    transform:rotate(90deg);
+  }
+  .modal-body{
+    padding:24px;
+  }
+  .modal-body h3{
+    font-size:1.4rem;
+    margin-bottom:8px;
+  }
+  .modal-body p{
+    color:#5C5145;
+    font-size:0.95rem;
+    margin-bottom:18px;
+  }
+  .modal-footer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .modal-qty{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    border:1px solid var(--line);
+    border-radius:30px;
+    padding:6px 14px;
+  }
+  .modal-qty button{
+    border:none;
+    background:transparent;
+    font-size:1.1rem;
+    cursor:pointer;
+    color:var(--ink);
+    width:24px; height:24px;
+    transition:color .2s ease, transform .2s ease;
+  }
+  .modal-qty button:hover{
+    color:var(--wine);
+    transform:scale(1.2);
+  }
+  .modal-added-msg{
+    margin-top:16px;
+    font-size:0.9rem;
+    color:var(--olive);
+    display:none;
+  }
+  .modal-added-msg.show{display:block;}
+</style>
+</head>
+<body>
+
+<div class="modal-overlay" id="itemModal">
+  <div class="modal-box">
+    <div class="modal-media">
+      <img id="modalImg" src="" alt="">
+      <button class="modal-close" onclick="closeItemModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3 id="modalName"></h3>
+      <p id="modalDesc"></p>
+      <div class="modal-footer">
+        <span class="price" id="modalPrice"></span>
+        <div class="modal-qty">
+          <button onclick="changeQty(-1)">−</button>
+          <span id="modalQty">1</span>
+          <button onclick="changeQty(1)">+</button>
+        </div>
+      </div>
+      <button class="btn btn-solid" style="width:100%; margin-top:18px; text-align:center;" onclick="confirmAdd()">Add to Order</button>
+      <p class="modal-added-msg" id="modalAddedMsg">Added to your order.</p>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">The <span>Grill House</span></div>
+    <div class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Reserve a Table</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero wrap">
+  <div>
+    <div class="hero-eyebrow">Family Restaurant · Nagpur, since 1998</div>
+    <h1>Good food, <em>cooked fresh</em>, served with care.</h1>
+    <p>We grill our vegetables over open flame, make pasta by hand every morning, and keep the menu short so everything stays fresh. Come hungry, stay as long as you like.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn btn-solid">View the Menu</a>
+      <a href="#contact" class="btn btn-outline">Book a Table</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Restaurant table with food" onerror="this.style.display='none'">
+    <div class="caption">Cooked fresh, every day</div>
+  </div>
+</section>
+
+<section class="section" id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Tonight's Menu</h2>
+      <p>A short list, changed with the season and whatever arrived at the door this morning.</p>
+    </div>
+    <div class="menu-grid">
+
+      <div class="card">
+        <div class="card-media">
+          <span>Chef's Pick</span>
+          <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=500&q=80" alt="Pasta with meat sauce" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="nonveg-mark"></span>Pasta with Meat Sauce</h3>
+        <p class="desc">Fresh pasta, slow-cooked beef and tomato sauce, grated cheese.</p>
+        <div class="card-footer">
+          <span class="price">₹420</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span>Best Seller</span>
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80" alt="Cheese pizza" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="veg-mark"></span>Classic Cheese Pizza</h3>
+        <p class="desc">Tomato sauce, melted mozzarella, fresh basil, thin crust.</p>
+        <div class="card-footer">
+          <span class="price">₹360</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span>New</span>
+          <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=500&q=80" alt="Grilled fish" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="nonveg-mark"></span>Grilled Fish</h3>
+        <p class="desc">Whole grilled fish with lemon, herbs, and olive oil.</p>
+        <div class="card-footer">
+          <span class="price">₹690</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span>Vegetarian</span>
+          <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=500&q=80" alt="Mushroom rice" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="veg-mark"></span>Mushroom Rice</h3>
+        <p class="desc">Creamy rice cooked with mushrooms and butter.</p>
+        <div class="card-footer">
+          <span class="price">₹390</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span>Starter</span>
+          <img src="https://images.unsplash.com/photo-1550507992-eb63ffee0847?auto=format&fit=crop&w=500&q=80" alt="Cheese starter with tomatoes" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="veg-mark"></span>Baked Cheese Starter</h3>
+        <p class="desc">Soft baked cheese with roasted tomatoes and toasted bread.</p>
+        <div class="card-footer">
+          <span class="price">₹310</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span>Dessert</span>
+          <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=500&q=80" alt="Coffee ice cream dessert" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="veg-mark"></span>Coffee Ice Cream</h3>
+        <p class="desc">Vanilla ice cream topped with hot coffee.</p>
+        <div class="card-footer">
+          <span class="price">₹190</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span>Popular</span>
+          <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=500&q=80" alt="Grilled chicken" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="nonveg-mark"></span>Grilled Chicken</h3>
+        <p class="desc">Marinated chicken grilled to perfection, served with herbs.</p>
+        <div class="card-footer">
+          <span class="price">₹450</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span>Vegetarian</span>
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80" alt="Veg burger" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="veg-mark"></span>Veg Burger</h3>
+        <p class="desc">Crisp vegetable patty, fresh lettuce, and cheese in a soft bun.</p>
+        <div class="card-footer">
+          <span class="price">₹250</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span>Starter</span>
+          <img src="https://images.unsplash.com/photo-1556008531-57e6eefc7be4?auto=format&fit=crop&w=500&q=80" alt="Garlic bread" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="veg-mark"></span>Garlic Bread</h3>
+        <p class="desc">Toasted bread with garlic butter and melted cheese.</p>
+        <div class="card-footer">
+          <span class="price">₹180</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span>Dessert</span>
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80" alt="Chocolate cake" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="veg-mark"></span>Chocolate Cake</h3>
+        <p class="desc">Rich chocolate sponge cake with a warm chocolate sauce.</p>
+        <div class="card-footer">
+          <span class="price">₹220</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span>Drinks</span>
+          <img src="https://images.unsplash.com/photo-1523677011781-c91d1bbe2f9e?auto=format&fit=crop&w=500&q=80" alt="Fresh lemonade" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="veg-mark"></span>Fresh Lemonade</h3>
+        <p class="desc">Chilled lemonade made fresh with mint and a touch of honey.</p>
+        <div class="card-footer">
+          <span class="price">₹120</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span>Starter</span>
+          <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80" alt="Onion soup" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="veg-mark"></span>Onion Soup</h3>
+        <p class="desc">Slow-cooked onion soup topped with melted cheese and croutons.</p>
+        <div class="card-footer">
+          <span class="price">₹200</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span>Mocktail</span>
+          <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=500&q=80" alt="Blue lagoon mocktail" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="veg-mark"></span>Blue Lagoon</h3>
+        <p class="desc">A refreshing blend of blue curacao syrup, soda, and lemon.</p>
+        <div class="card-footer">
+          <span class="price">₹160</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span>Mocktail</span>
+          <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=500&q=80" alt="Virgin mojito" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="veg-mark"></span>Virgin Mojito</h3>
+        <p class="desc">Fresh mint and lime muddled with soda over crushed ice.</p>
+        <div class="card-footer">
+          <span class="price">₹150</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span>Mocktail</span>
+          <img src="https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=500&q=80" alt="Watermelon cooler" onerror="this.parentElement.style.background='linear-gradient(135deg, var(--gold), var(--wine))'; this.remove();">
+        </div>
+        <h3><span class="veg-mark"></span>Watermelon Cooler</h3>
+        <p class="desc">Chilled watermelon juice with mint and a splash of lime.</p>
+        <div class="card-footer">
+          <span class="price">₹140</span>
+          <button class="add-btn" onclick="openItemModal(this)">+</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-visual">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=700&q=80" alt="Chef cooking in the kitchen" onerror="this.remove();">
+    </div>
+    <div>
+      <h2>A kitchen run by one family.</h2>
+      <p>The Grill House opened in 1998 with one small kitchen and a short menu that hasn't changed much since. We still make pasta by hand every morning, buy vegetables from three nearby farms, and keep the dining room small enough that the kitchen knows most tables by name.</p>
+      <p>No shortcuts, no reheating — everything on your table was cooked that day.</p>
+      <div class="stat-row">
+        <div><h3>26</h3><span>Years Open</span></div>
+        <div><h3>3</h3><span>Local Farms</span></div>
+        <div><h3>40</h3><span>Seats Only</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Find Us</h2>
+      <p>Walk-ins welcome after 6pm; tables of five or more should book ahead.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Get in touch</h3>
+        <p>We're open for dinner Tuesday through Sunday. Closed Mondays for market runs and menu testing.</p>
+        <div class="info-line"><b>Address</b> 14 Grant Road, Civil Lines, Nagpur</div>
+        <div class="info-line"><b>Phone</b> +91 98230 11122</div>
+        <div class="info-line"><b>Hours</b> Tue–Sun, 6pm – 11pm</div>
+        <div class="info-line"><b>Email</b> hello@thegrillhouse.in</div>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('Thanks — we will get back to you shortly.');">
+        <input type="text" placeholder="Your name" required>
+        <input type="tel" placeholder="Phone number" required>
+        <input type="text" placeholder="Party size & preferred time">
+        <textarea placeholder="Anything we should know? (allergies, occasion...)"></textarea>
+        <button type="submit" class="btn btn-solid">Send Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>© 2026 The Grill House. All rights reserved.</span>
+  <span>Civil Lines, Nagpur</span>
+</footer>
+
+<script>
+  let currentQty = 1;
+  let currentPrice = 0;
+
+  function openItemModal(btn){
+    const card = btn.closest('.card');
+    const img = card.querySelector('.card-media img');
+    const name = card.querySelector('h3').textContent.trim();
+    const desc = card.querySelector('.desc').textContent.trim();
+    const price = card.querySelector('.price').textContent.trim();
+
+    document.getElementById('modalImg').src = img ? img.src : '';
+    document.getElementById('modalImg').alt = name;
+    document.getElementById('modalName').textContent = name;
+    document.getElementById('modalDesc').textContent = desc;
+    document.getElementById('modalPrice').textContent = price;
+    document.getElementById('modalQty').textContent = '1';
+    document.getElementById('modalAddedMsg').classList.remove('show');
+
+    currentQty = 1;
+    currentPrice = parseInt(price.replace(/[^\d]/g, '')) || 0;
+
+    const modal = document.getElementById('itemModal');
+    modal.style.display = 'flex';
+    requestAnimationFrame(() => modal.classList.add('open'));
+  }
+
+  function closeItemModal(){
+    const modal = document.getElementById('itemModal');
+    modal.classList.remove('open');
+    setTimeout(() => { modal.style.display = 'none'; }, 250);
+  }
+
+  function changeQty(delta){
+    currentQty = Math.max(1, currentQty + delta);
+    document.getElementById('modalQty').textContent = currentQty;
+  }
+
+  function confirmAdd(){
+    const msg = document.getElementById('modalAddedMsg');
+    const name = document.getElementById('modalName').textContent;
+    msg.textContent = currentQty + ' × ' + name + ' added to your order.';
+    msg.classList.add('show');
+  }
+
+  document.getElementById('itemModal').addEventListener('click', function(e){
+    if(e.target === this) closeItemModal();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeItemModal();
+  });
+</script>
+
+</body>
+</html>
